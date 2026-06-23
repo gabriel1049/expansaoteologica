@@ -1,0 +1,16 @@
+/*
+Theme Name: Expansao Teologica
+Theme URI: https://expansaoteologica.com.br
+Author: Gabriel Oliveira
+Description: Tema customizado para a plataforma de cursos Expansao Teologica. HTML5 semantico, performance-first, integrado ao Tutor LMS e WooCommerce.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: expansao-teologica
+*/
+
+/*
+  Este arquivo carrega apenas o cabecalho obrigatorio do tema.
+  Os estilos reais ficam em /assets/css e sao carregados via functions.php
+  na ordem: variables -> base -> components -> tutor.
+*/

@@ -1,0 +1,22 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs e temporarios
+*.log
+*.tmp
+*.bak
+*~
+
+# Dependencias (caso use build no futuro)
+node_modules/
+vendor/
+
+# Nao versionar uploads ou cache, se um dia existirem aqui
+/cache/

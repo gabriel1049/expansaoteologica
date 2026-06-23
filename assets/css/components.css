@@ -1,0 +1,134 @@
+/* =========================================================
+   Componentes - botoes, badges, cards, conversao
+   ========================================================= */
+
+/* --- Botoes --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-base);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body);
+  line-height: 1;
+  padding: 0.8rem 1.5rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--color-cta);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-xs);
+}
+.btn--primary:hover { background: var(--color-cta-hover); color: #fff; box-shadow: var(--shadow-md); }
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+.btn--secondary:hover { background: var(--color-primary); color: #fff; }
+
+.btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+.btn--ghost:hover { background: rgba(255, 255, 255, 0.12); border-color: #fff; color: #fff; }
+
+.btn--block { width: 100%; }
+.btn--sm { padding: 0.55rem 1rem; font-size: var(--fs-sm); }
+.btn--lg { padding: 0.95rem 1.85rem; font-size: var(--fs-lead); }
+
+.btn__icon { width: 1.1em; height: 1.1em; }
+
+/* --- Badges / pills --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  line-height: 1.2;
+}
+.badge--category { background: var(--color-primary-10); color: var(--color-primary); }
+.badge--gold { background: var(--color-gold-10); color: var(--color-gold); }
+.badge--success { background: var(--color-success-10); color: var(--color-success); }
+.badge--level { background: var(--color-surface-2); color: var(--color-text-muted); }
+
+/* --- Cards --- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.card--pad { padding: var(--space-md); }
+.card.is-interactive { transition: transform var(--transition-slow), box-shadow var(--transition-slow); }
+.card.is-interactive:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+/* --- Divisor com acento --- */
+.divider {
+  height: 3px;
+  width: 48px;
+  background: var(--color-gold);
+  border: 0;
+  border-radius: var(--radius-pill);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+/* --- Lista de beneficios / "este curso inclui" --- */
+.feature-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-sm); }
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+}
+.feature-list .feature-list__ic {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  color: var(--color-gold);
+  margin-top: 1px;
+}
+.feature-list strong { color: var(--color-ink); font-weight: var(--fw-semibold); }
+
+/* --- Avaliacao com estrelas --- */
+.rating { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--fs-sm); }
+.rating__stars, .lp-testimonial__stars { display: inline-flex; gap: 2px; color: var(--color-star); }
+.rating__stars svg, .lp-testimonial__stars svg { width: 16px; height: 16px; }
+.rating__score { font-weight: var(--fw-semibold); color: var(--color-ink); }
+.rating__count { color: var(--color-text-muted); }
+
+/* --- Selo de garantia --- */
+.guarantee {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: var(--space-sm);
+  background: var(--color-success-10);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+}
+.guarantee svg { width: 22px; height: 22px; color: var(--color-success); flex-shrink: 0; }
+
+/* --- Avatar / instrutor --- */
+.avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--color-surface-2);
+}

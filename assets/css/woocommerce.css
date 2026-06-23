@@ -1,0 +1,191 @@
+/* =========================================================
+   WooCommerce - Carrinho, Checkout e Minha Conta
+   Restilizacao com a identidade Expansao Teologica.
+   So carrega nas paginas do Woo (ver functions.php).
+   ========================================================= */
+
+.woocommerce, .woocommerce-page {
+  font-family: var(--font-base);
+  color: var(--color-text);
+}
+
+/* Container das paginas Woo herda o respiro do tema */
+.woocommerce .container,
+.woocommerce-cart .entry-content,
+.woocommerce-checkout .entry-content {
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+/* ===== BOTOES ===== */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce .single_add_to_cart_button,
+.woocommerce #place_order,
+.woocommerce .checkout-button,
+.woocommerce .wc-proceed-to-checkout a.button {
+  background: var(--color-cta) !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-base) !important;
+  font-weight: var(--fw-semibold) !important;
+  border: 0 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.85rem 1.6rem !important;
+  text-transform: none !important;
+  transition: background var(--transition), transform var(--transition) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce #place_order:hover,
+.woocommerce .checkout-button:hover,
+.woocommerce .wc-proceed-to-checkout a.button:hover {
+  background: var(--color-cta-hover) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* Botao secundario (ex.: "Atualizar carrinho") */
+.woocommerce button[name="update_cart"] {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+  box-shadow: none !important;
+}
+.woocommerce button[name="update_cart"]:hover {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+}
+
+/* ===== TABELA DO CARRINHO ===== */
+.woocommerce table.shop_table {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  border-collapse: separate;
+  overflow: hidden;
+}
+.woocommerce table.shop_table th {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-weight: var(--fw-semibold);
+  padding: 1rem;
+}
+.woocommerce table.shop_table td { padding: 1rem; border-top: 1px solid var(--color-line); }
+.woocommerce .cart_item .product-name a { color: var(--color-ink); font-weight: var(--fw-semibold); }
+.woocommerce .product-remove a.remove {
+  color: var(--color-text-muted) !important;
+  border: 1px solid var(--color-line);
+}
+.woocommerce .product-remove a.remove:hover {
+  background: var(--color-cta) !important;
+  color: var(--color-ink) !important;
+  border-color: var(--color-cta);
+}
+
+/* Precos */
+.woocommerce .price,
+.woocommerce .amount { color: var(--color-ink); font-weight: var(--fw-semibold); }
+.woocommerce del .amount { color: var(--color-text-muted); font-weight: var(--fw-regular); }
+.woocommerce ins { background: transparent; }
+
+/* ===== TOTAIS DO CARRINHO ===== */
+.woocommerce .cart_totals,
+.woocommerce-checkout #order_review {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+}
+.woocommerce .cart_totals h2,
+.woocommerce-checkout h3 { color: var(--color-ink); }
+
+/* ===== CUPOM ===== */
+.woocommerce form.checkout_coupon,
+.woocommerce .coupon { border: 1px dashed var(--color-line); border-radius: var(--radius-sm); }
+
+/* ===== CAMPOS DE FORMULARIO (CHECKOUT / LOGIN) ===== */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+.woocommerce .select2-container .select2-selection {
+  border: 1px solid var(--color-line) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.7rem 0.9rem !important;
+  font-family: var(--font-base) !important;
+  background: var(--color-surface);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce form .form-row select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(42,74,107,0.12) !important;
+  outline: 0;
+}
+.woocommerce form .form-row label { font-weight: var(--fw-semibold); color: var(--color-ink); }
+
+/* ===== AVISOS / MENSAGENS ===== */
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  border-top-color: var(--color-gold) !important;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+.woocommerce-message::before { color: var(--color-success); }
+.woocommerce-info::before { color: var(--color-primary); }
+
+/* ===== ABAS / MINHA CONTA ===== */
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none; padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation li a {
+  display: block; padding: 0.85rem 1rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-line);
+}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+  border-left: 3px solid var(--color-gold);
+}
+
+/* Paginas do Woo usam a largura total do container (sem o limite de leitura) */
+.woocommerce-cart .page-article__content,
+.woocommerce-checkout .page-article__content,
+.woocommerce-account .page-article__content { max-width: none; }
+
+/* ===== CARRINHO VAZIO (estado branded) ===== */
+.cart-empty-state {
+  text-align: center;
+  max-width: 480px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-xl) var(--space-md);
+}
+.cart-empty-state__icon {
+  width: 88px; height: 88px;
+  margin: 0 auto var(--space-md);
+  display: grid; place-items: center;
+  background: rgba(201,162,75,0.12);
+  color: var(--color-gold);
+  border-radius: 50%;
+}
+.cart-empty-state__icon svg { width: 40px; height: 40px; }
+.cart-empty-state__title { margin-bottom: var(--space-xs); }
+.cart-empty-state__text { color: var(--color-text-muted); margin-bottom: var(--space-lg); }
+
+/* Esconde o aviso padrao "cesta vazia" do Woo (substituido pelo estado acima) */
+.woocommerce-cart .cart-empty.woocommerce-info { display: none; }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .woocommerce table.shop_table th { display: none; }
+  .woocommerce-cart .cart-collaterals .cart_totals { width: 100%; float: none; }
+}

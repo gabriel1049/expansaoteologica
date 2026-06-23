@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expansao Teologica">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B2A41"/>
+      <stop offset="1" stop-color="#0F1B2D"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="256" y1="150" x2="256" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4D2A0"/>
+      <stop offset="1" stop-color="#C9A24B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Raios de expansao -->
+  <g stroke="url(#gold)" stroke-width="10" stroke-linecap="round" opacity="0.85">
+    <line x1="256" y1="150" x2="256" y2="92"/>
+    <line x1="343" y1="178" x2="384" y2="137"/>
+    <line x1="169" y1="178" x2="128" y2="137"/>
+    <line x1="372" y1="256" x2="430" y2="256"/>
+    <line x1="140" y1="256" x2="82" y2="256"/>
+  </g>
+
+  <!-- Livro aberto -->
+  <g>
+    <path d="M256 214c-28-22-66-28-104-22-8 1-14 8-14 16v150c0 9 8 16 17 14 34-6 68 0 101 20" fill="url(#gold)" opacity="0.95"/>
+    <path d="M256 214c28-22 66-28 104-22 8 1 14 8 14 16v150c0 9-8 16-17 14-34-6-68 0-101 20" fill="#FBFAF7"/>
+    <!-- Linhas das paginas -->
+    <g stroke="#C9A24B" stroke-width="7" stroke-linecap="round" opacity="0.45">
+      <line x1="278" y1="244" x2="346" y2="236"/>
+      <line x1="278" y1="276" x2="346" y2="268"/>
+      <line x1="278" y1="308" x2="346" y2="300"/>
+    </g>
+    <!-- Lombada -->
+    <rect x="251" y="210" width="10" height="206" rx="5" fill="#1B2A41"/>
+  </g>
+</svg>

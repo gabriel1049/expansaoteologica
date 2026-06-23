@@ -1,0 +1,199 @@
+/* =========================================================
+   Tutor LMS - restilizacao das telas do curso
+   Sobrescreve o visual do plugin sem quebrar a estrutura.
+   ========================================================= */
+
+/* --- HERO --- */
+.course-hero {
+  background: linear-gradient(155deg, var(--color-ink) 0%, var(--color-deep) 100%);
+  color: #fff;
+  padding-block: var(--section-y);
+}
+.course-hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+.course-hero__title { color: #fff; margin-bottom: var(--space-sm); }
+.course-hero__excerpt { color: rgba(255,255,255,0.82); font-size: var(--fs-lead); }
+
+/* Prova social do hero (avaliacao + alunos + nivel) */
+.course-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-md);
+}
+.course-hero__trust .rating__score,
+.course-hero__trust .rating__count { color: rgba(255,255,255,0.9); }
+.course-hero__trust-item { color: rgba(255,255,255,0.75); font-size: var(--fs-sm); }
+.course-hero__trust-item strong { color: #fff; }
+.course-hero__trust .badge--level { background: rgba(255,255,255,0.12); color: #fff; }
+
+.course-hero__media img,
+.course-hero__media iframe,
+.course-hero__media video {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* --- LAYOUT (conteudo + sidebar) --- */
+.course-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-lg);
+  padding-block: var(--section-y);
+  align-items: start;
+}
+
+/* --- CAIXA DE COMPRA --- */
+.purchase-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md);
+}
+.purchase-box.tutor-is-sticky { position: sticky; top: 84px; }
+
+.purchase-box__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+.purchase-box__guarantee { margin-top: var(--space-md); }
+.purchase-box__includes { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-line); }
+.purchase-box__extra { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-line); }
+.purchase-box__extra:empty { display: none; }
+
+/* Forca o botao de compra do Tutor/Woo a usar nosso estilo de CTA */
+.purchase-box .tutor-btn-primary,
+.purchase-box .tutor-enroll-course-button,
+.purchase-box button[type="submit"],
+.purchase-box .single_add_to_cart_button {
+  display: block !important;
+  width: 100% !important;
+  background: var(--color-cta) !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-base) !important;
+  font-weight: var(--fw-semibold) !important;
+  font-size: var(--fs-lead) !important;
+  border: 0 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.95rem 1.5rem !important;
+  box-shadow: var(--shadow-xs) !important;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+}
+.purchase-box .tutor-btn-primary:hover,
+.purchase-box .single_add_to_cart_button:hover {
+  background: var(--color-cta-hover) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Preco */
+.purchase-box .tutor-course-price,
+.purchase-box .price {
+  font-size: 1.6rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-ink);
+}
+.purchase-box del, .purchase-box del .amount { color: var(--color-text-muted); font-weight: var(--fw-regular); font-size: 1.1rem; }
+
+/* --- ABAS / NAV --- */
+.course-nav { background: var(--color-bg); border-bottom: 1px solid var(--color-line); }
+.tutor-tab-item { display: none; }
+.tutor-tab-item.is-active { display: block; }
+
+/* --- CURRICULO --- */
+.tutor-course-topic {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xs);
+  overflow: hidden;
+}
+
+/* =========================================================
+   RESPONSIVO (mobile-first)
+   ========================================================= */
+@media (max-width: 960px) {
+  .course-hero__inner { grid-template-columns: 1fr; }
+  .course-layout { grid-template-columns: 1fr; }
+
+  /* No mobile, a caixa de compra deixa de ser sticky lateral
+     e ganha destaque no topo do conteudo */
+  .course-sidebar { order: -1; }
+  .purchase-box.tutor-is-sticky { position: static; }
+}
+
+/* =========================================================
+   PLAYER DE AULA (single lesson / spotlight mode)
+   Estilizado por CSS, sem override de PHP (mais seguro).
+   ========================================================= */
+
+/* Wrapper geral: sidebar de navegacao + conteudo */
+.tutor-course-single-content-wrapper {
+  background: var(--color-bg);
+}
+
+/* Sidebar de aulas */
+.tutor-course-single-sidebar-wrapper {
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-line);
+}
+
+/* Player de video: responsivo 16:9, cantos arredondados */
+.tutor-video-player-wrapper {
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-md);
+}
+.tutor-video-player-wrapper iframe,
+.tutor-video-player-wrapper video,
+.tutor-video-player-wrapper .plyr {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  border: 0;
+}
+
+.tutor-course-topic-single-body {
+  max-width: 920px;
+  margin-inline: auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* Abas dentro da aula (visao geral, anexos, comentarios) */
+.tutor-course-spotlight-nav .tutor-nav-link.is-active {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+/* Botao "marcar como concluida" herda o CTA da marca */
+.tutor-course-topic-single-body .tutor-btn-primary {
+  background: var(--color-success) !important;
+  border: 0 !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-base) !important;
+  font-weight: var(--fw-semibold) !important;
+}
+
+/* Barra de progresso do curso */
+.tutor-progress-bar { background: var(--color-line); border-radius: 999px; }
+.tutor-progress-bar .tutor-progress-value { background: var(--color-gold); }
+
+@media (max-width: 768px) {
+  .tutor-course-topic-single-body { padding: var(--space-md) var(--space-sm); }
+}
