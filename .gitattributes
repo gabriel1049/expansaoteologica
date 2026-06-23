@@ -1,0 +1,12 @@
+# Normaliza quebras de linha para LF (padrao Linux/servidor)
+* text=auto eol=lf
+
+# Arquivos binarios: nao mexer
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
