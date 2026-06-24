@@ -67,6 +67,26 @@ $tpt_courses_url = get_post_type_archive_link( 'courses' ) ? get_post_type_archi
 	</div>
 </footer>
 
+<?php if ( function_exists( 'WC' ) ) : ?>
+<!-- Toast de notificacao do carrinho (preenchido via JS no evento added_to_cart) -->
+<div class="cart-toast" id="cart-toast" role="status" aria-live="polite" hidden>
+	<span class="cart-toast__icon" aria-hidden="true">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+	</span>
+	<div class="cart-toast__body">
+		<strong class="cart-toast__title">Curso adicionado ao carrinho</strong>
+		<span class="cart-toast__text">Continue navegando ou finalize sua matricula.</span>
+	</div>
+	<div class="cart-toast__actions">
+		<a class="btn btn--primary btn--sm" href="<?php echo esc_url( wc_get_cart_url() ); ?>">Ver carrinho</a>
+		<a class="cart-toast__checkout" href="<?php echo esc_url( wc_get_checkout_url() ); ?>">Finalizar &rarr;</a>
+	</div>
+	<button class="cart-toast__close" type="button" aria-label="Fechar">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+	</button>
+</div>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>
