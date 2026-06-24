@@ -45,11 +45,14 @@
 /* --- LAYOUT (conteudo + sidebar) --- */
 .course-layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: var(--space-lg);
-  padding-block: var(--section-y);
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: var(--space-xl);
+  padding-block: clamp(2rem, 1.2rem + 2.5vw, 3rem);
   align-items: start;
 }
+/* Texto corrido da descricao limitado para nao perder legibilidade na coluna larga */
+.course-main .tutor-tab-item p,
+.course-main .tutor-course-content p { max-width: 72ch; }
 
 /* --- CAIXA DE COMPRA --- */
 .purchase-box {
@@ -60,6 +63,7 @@
   padding: var(--space-md);
 }
 .purchase-box.tutor-is-sticky { position: sticky; top: 84px; }
+@media (min-width: 1280px) { .purchase-box { padding: var(--space-lg); } }
 
 .purchase-box__title {
   font-size: var(--fs-sm);
@@ -212,13 +216,16 @@
 .course-archive-hero h1 { color: #fff; margin-bottom: var(--space-2xs); }
 .course-archive-hero .lead { color: rgba(255,255,255,0.82); max-width: 60ch; margin: 0; }
 
-.course-archive-body { padding-block: var(--section-y); }
+.course-archive-body { padding-block: clamp(2rem, 1.2rem + 2.5vw, 3rem); }
+.course-archive-body .tutor-container { max-width: var(--container); }
 
-/* Grade responsiva (auto-fill, sobrepoe colunas fixas do Tutor) */
+/* Grade responsiva: auto-fit + card com largura maxima resolve o caso de
+   poucos cursos (1-2 cards ficam centralizados em tamanho normal, nunca esticados) */
 .course-archive-body .tutor-course-list {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-  gap: var(--space-md) !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 360px)) !important;
+  justify-content: center;
+  gap: var(--space-lg) !important;
 }
 
 /* Card */
@@ -230,6 +237,8 @@
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
   height: 100%;
+  width: 100%;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
 }

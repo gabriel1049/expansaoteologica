@@ -37,7 +37,7 @@
     linear-gradient(180deg, rgba(15,27,45,0.55) 0%, rgba(15,27,45,0.78) 100%),
     linear-gradient(90deg, rgba(15,27,45,0.92) 0%, rgba(15,27,45,0.45) 100%);
 }
-.hp-hero__inner { color: #fff; max-width: 680px; }
+.hp-hero__inner { color: #fff; max-width: 780px; }
 .hp-hero__eyebrow { color: var(--color-gold-soft); }
 .hp-hero__title { color: #fff; font-size: clamp(1.9rem, 1.3rem + 3.2vw, 3.1rem); margin-bottom: var(--space-sm); }
 .hp-hero__lead { color: rgba(255,255,255,0.85); font-size: var(--fs-lead); max-width: 52ch; }
@@ -191,9 +191,10 @@
 
 @media (min-width: 1024px) {
   .hp-hero { min-height: clamp(520px, 76vh, 660px); }
-  .hp-courses__grid { grid-template-columns: repeat(3, 1fr); }
-  .hp-benefits__grid { grid-template-columns: repeat(3, 1fr); }
-  .hp-why__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); }
+  .hp-courses__grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); }
+  .hp-benefits__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+  .hp-tst__grid { gap: var(--space-lg); }
+  .hp-why__grid { grid-template-columns: 1fr 1.05fr; gap: var(--space-xl); }
 }
 
 /* =========================================================
@@ -246,6 +247,6 @@
 .hp-path__link { display: inline-block; margin-top: var(--space-xs); font-weight: var(--fw-semibold); font-size: var(--fs-sm); }
 
 @media (min-width: 880px) {
-  .hp-path__steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .hp-path__steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
   .hp-path__step { flex-direction: column; gap: var(--space-sm); }
 }

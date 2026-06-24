@@ -62,11 +62,11 @@
   --space-2xl: 4.5rem;    /* 72px */
 
   /* Ritmo vertical das secoes (responsivo) */
-  --section-y: clamp(2.5rem, 1.5rem + 4vw, 4rem);
+  --section-y: clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
 
   /* --- Layout --- */
-  --container: 1140px;
-  --container-narrow: 880px;
+  --container: 1320px;        /* largura unica: aproveita telas largas mantendo alinhamento */
+  --container-narrow: 880px;  /* blocos de texto longo (legibilidade) */
   --radius:    12px;
   --radius-sm: 8px;
   --radius-lg: 16px;

@@ -15,6 +15,46 @@
 .woocommerce-checkout .entry-content {
   max-width: var(--container);
   margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* ===== LAYOUT EM DUAS COLUNAS (desktop) ===== */
+@media (min-width: 769px) {
+  /* Checkout: formulario (largo) + resumo do pedido (coluna fixa)
+     Posicionamento explicito por causa do titulo "Seu pedido" entre as colunas */
+  .woocommerce-checkout form.checkout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, 400px);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-sm);
+    align-items: start;
+  }
+  .woocommerce-checkout #customer_details,
+  .woocommerce-checkout #order_review,
+  .woocommerce-checkout #order_review_heading { width: auto; float: none; }
+  .woocommerce-checkout #customer_details { grid-column: 1; grid-row: 1 / span 2; }
+  .woocommerce-checkout #order_review_heading { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .woocommerce-checkout #order_review { grid-column: 2; grid-row: 2; }
+
+  /* Carrinho: totais com largura controlada, alinhados a direita
+     (robusto mesmo sem cross-sells, sem branco morto no meio) */
+  .woocommerce-cart .cart-collaterals { display: block; }
+  .woocommerce-cart .cart-collaterals .cross-sells { width: 100%; float: none; margin-bottom: var(--space-lg); }
+  .woocommerce-cart .cart-collaterals .cart_totals {
+    width: 100%; max-width: 400px;
+    margin-left: auto; float: none;
+  }
+
+  /* Minha Conta: menu lateral fixo + conteudo no resto */
+  .woocommerce-account .woocommerce {
+    display: grid;
+    grid-template-columns: minmax(200px, 240px) 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation,
+  .woocommerce-account .woocommerce-MyAccount-content { width: auto; float: none; }
 }
 
 /* ===== BOTOES ===== */
@@ -97,7 +137,7 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
-  padding: var(--space-md);
+  padding: var(--space-lg);
 }
 .woocommerce .cart_totals h2,
 .woocommerce-checkout h3 { color: var(--color-ink); }

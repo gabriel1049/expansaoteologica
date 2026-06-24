@@ -66,6 +66,11 @@ strong, b { font-weight: var(--fw-semibold); }
 }
 .container--narrow { max-width: var(--container-narrow); }
 
+/* Mais folga lateral no desktop (conteudo nao cola nas bordas em telas largas) */
+@media (min-width: 1024px) {
+  .container { padding-inline: var(--space-lg); }
+}
+
 .section { padding-block: var(--section-y); }
 
 .lead { font-size: var(--fs-lead); color: var(--color-text-muted); line-height: 1.6; }
@@ -95,6 +100,8 @@ strong, b { font-weight: var(--fw-semibold); }
 .page-article__title { margin-bottom: var(--space-2xs); }
 .page-article__content { max-width: var(--container-narrow); }
 .page-article__content > * { margin-bottom: var(--space-sm); }
+.page-article__content > h2 { margin-top: var(--space-lg); }
+.page-article__content > h3 { margin-top: var(--space-md); }
 
 /* Acessibilidade: respeita preferencia de movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
