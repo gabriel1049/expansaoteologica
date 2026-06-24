@@ -2,8 +2,8 @@
 /**
  * Home > Cursos em destaque
  *
- * Lista os cursos publicados (Tutor) e completa a grade com cards
- * "Em breve" para comunicar o ecossistema em crescimento.
+ * Lista os cursos publicados (Tutor) e completa a grade com os
+ * proximos lancamentos do ecossistema (Basico e Medio em Teologia).
  *
  * @package ExpansaoTeologica
  */
@@ -14,13 +14,24 @@ $courses_url = isset( $args['courses_url'] ) ? $args['courses_url'] : '#';
 $courses = get_posts(
 	array(
 		'post_type'      => 'courses',
-		'posts_per_page' => 3,
+		'posts_per_page' => 4,
 		'post_status'    => 'publish',
 	)
 );
 
-// Quantos cards "Em breve" exibir para preencher a grade (minimo 3 colunas).
-$soon_slots = max( 0, 3 - count( $courses ) );
+// Proximos lancamentos do ecossistema.
+$upcoming = array(
+	array(
+		'level' => 'Nivel 1',
+		'title' => 'Basico em Teologia',
+		'text'  => 'Os fundamentos da fe crista para quem esta dando os primeiros passos.',
+	),
+	array(
+		'level' => 'Nivel 2',
+		'title' => 'Medio em Teologia',
+		'text'  => 'Aprofundamento em doutrina, Biblia e historia da Igreja.',
+	),
+);
 ?>
 <section class="section hp-courses" id="cursos">
 	<div class="container">
@@ -39,15 +50,14 @@ $soon_slots = max( 0, 3 - count( $courses ) );
 				$permalink = get_permalink( $course->ID );
 				$price     = function_exists( 'tutor_utils' ) ? tutor_utils()->get_course_price( $course->ID ) : '';
 				$lessons   = function_exists( 'tutor_utils' ) ? tutor_utils()->get_lesson_count_by_course( $course->ID ) : 0;
-
-				// Imagem: destaque do curso, com fallback para o banner enviado.
-				$thumb = has_post_thumbnail( $course->ID ) ? get_the_post_thumbnail_url( $course->ID, 'large' ) : ( $first ? $img_course : '' );
+				$thumb     = has_post_thumbnail( $course->ID ) ? get_the_post_thumbnail_url( $course->ID, 'large' ) : ( $first ? $img_course : '' );
 				?>
 				<article class="card is-interactive hp-course">
 					<a class="hp-course__media" href="<?php echo esc_url( $permalink ); ?>" aria-hidden="true" tabindex="-1">
 						<?php if ( $thumb ) : ?>
 							<img src="<?php echo esc_url( $thumb ); ?>" alt="" loading="lazy">
 						<?php endif; ?>
+						<span class="hp-course__tag">Disponivel</span>
 					</a>
 					<div class="hp-course__body">
 						<span class="badge badge--gold">Curso</span>
@@ -73,18 +83,19 @@ $soon_slots = max( 0, 3 - count( $courses ) );
 			endforeach;
 			?>
 
-			<?php for ( $i = 0; $i < $soon_slots; $i++ ) : ?>
-				<article class="card hp-course hp-course--soon" aria-hidden="true">
+			<?php foreach ( $upcoming as $u ) : ?>
+				<article class="card hp-course hp-course--soon">
 					<div class="hp-course__media hp-course__media--soon">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+						<span class="hp-course__tag hp-course__tag--soon">Em breve</span>
 					</div>
 					<div class="hp-course__body">
-						<span class="badge badge--level">Em breve</span>
-						<h3 class="hp-course__title">Novos cursos a caminho</h3>
-						<p class="text-muted">Trilhas de lideranca, ministerio e desenvolvimento espiritual.</p>
+						<span class="badge badge--level"><?php echo esc_html( $u['level'] ); ?></span>
+						<h3 class="hp-course__title"><?php echo esc_html( $u['title'] ); ?></h3>
+						<p class="text-muted"><?php echo esc_html( $u['text'] ); ?></p>
 					</div>
 				</article>
-			<?php endfor; ?>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>

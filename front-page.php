@@ -26,6 +26,7 @@ $ctx = array(
 	<?php
 	get_template_part( 'template-parts/home/hero', null, $ctx );
 	get_template_part( 'template-parts/home/mission', null, $ctx );
+	get_template_part( 'template-parts/home/path', null, $ctx );
 	get_template_part( 'template-parts/home/courses', null, $ctx );
 	get_template_part( 'template-parts/home/benefits', null, $ctx );
 	get_template_part( 'template-parts/home/why-us', null, $ctx );

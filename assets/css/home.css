@@ -195,3 +195,57 @@
   .hp-benefits__grid { grid-template-columns: repeat(3, 1fr); }
   .hp-why__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); }
 }
+
+/* =========================================================
+   TAG NO CARD DE CURSO (Disponivel / Em breve)
+   ========================================================= */
+.hp-course__media { position: relative; }
+.hp-course__tag {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(15,27,45,0.82);
+  color: #fff;
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+}
+.hp-course__tag--soon { background: rgba(255,255,255,0.9); color: var(--color-text-muted); }
+
+/* =========================================================
+   TRILHA DE FORMACAO
+   ========================================================= */
+.hp-path { background: var(--color-surface-2); }
+.hp-path__steps {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: 1fr; gap: var(--space-md);
+}
+.hp-path__step {
+  position: relative;
+  display: flex; align-items: flex-start; gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+.hp-path__step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.hp-path__step--live { border-color: var(--color-gold); box-shadow: var(--shadow-md); }
+.hp-path__num {
+  font-size: 1.7rem; font-weight: var(--fw-bold);
+  color: var(--color-gold); line-height: 1; flex-shrink: 0;
+}
+.hp-path__body h3 { font-size: var(--fs-h3); margin: var(--space-2xs) 0 0.2rem; }
+.hp-path__body p { font-size: var(--fs-sm); margin: 0; }
+.hp-path__status {
+  display: inline-block;
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+  padding: 3px 10px; border-radius: var(--radius-pill);
+}
+.hp-path__status--soon { background: var(--color-surface-2); color: var(--color-text-muted); }
+.hp-path__status--live { background: var(--color-success-10); color: var(--color-success); }
+.hp-path__link { display: inline-block; margin-top: var(--space-xs); font-weight: var(--fw-semibold); font-size: var(--fs-sm); }
+
+@media (min-width: 880px) {
+  .hp-path__steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .hp-path__step { flex-direction: column; gap: var(--space-sm); }
+}
