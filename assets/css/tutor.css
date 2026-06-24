@@ -249,22 +249,42 @@
 .course-archive-body .tutor-meta-icon { color: var(--color-text-muted); font-size: var(--fs-sm); }
 
 .course-archive-body .tutor-card-footer { padding: 0 var(--space-md) var(--space-md); margin-top: auto; }
+
+/* Empilha preco e botao no rodape (cabe em qualquer largura de card) */
+.course-archive-body .tutor-card-footer > .tutor-d-flex {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: var(--space-sm) !important;
+}
 .course-archive-body .tutor-course-price,
 .course-archive-body .tutor-course-price .price,
-.course-archive-body .price { color: var(--color-ink); font-weight: var(--fw-bold); }
+.course-archive-body .list-item-price .price,
+.course-archive-body .price { color: var(--color-ink); font-weight: var(--fw-bold); font-size: 1.2rem; }
 
-/* Botao de matricula herda o CTA da marca */
-.course-archive-body .tutor-btn-outline-primary,
-.course-archive-body .tutor-course-list-enroll {
+/* Qualquer botao/link de acao no rodape vira CTA dourado, largura total */
+.course-archive-body .tutor-card-footer a,
+.course-archive-body .tutor-card-footer button,
+.course-archive-body .tutor-course-list-btn,
+.course-archive-body .list-item-button {
+  display: block !important;
+  width: 100% !important;
+}
+.course-archive-body .tutor-card-footer .tutor-btn,
+.course-archive-body .tutor-card-footer a.tutor-btn,
+.course-archive-body .tutor-card-footer button {
   background: var(--color-cta) !important;
   color: var(--color-ink) !important;
   border: 0 !important;
   border-radius: var(--radius-sm) !important;
   font-family: var(--font-base) !important;
   font-weight: var(--fw-semibold) !important;
+  padding: 0.7rem 1rem !important;
+  white-space: normal !important;
+  text-align: center;
   transition: background var(--transition), transform var(--transition) !important;
 }
-.course-archive-body .tutor-btn-outline-primary:hover {
+.course-archive-body .tutor-card-footer .tutor-btn:hover,
+.course-archive-body .tutor-card-footer button:hover {
   background: var(--color-cta-hover) !important;
   color: #fff !important;
   transform: translateY(-1px);
