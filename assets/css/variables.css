@@ -15,6 +15,7 @@
   --color-gold-soft:  #E4D2A0;
   --color-gold-10:    rgba(201, 162, 75, 0.12);
   --color-gold-20:    rgba(201, 162, 75, 0.20);
+  --color-gold-line:  rgba(201, 162, 75, 0.40);
   --color-cta:        #C9A24B;
   --color-cta-hover:  #B38E38;
 
@@ -62,7 +63,7 @@
   --space-2xl: 4.5rem;    /* 72px */
 
   /* Ritmo vertical das secoes (responsivo) */
-  --section-y: clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
+  --section-y: clamp(3rem, 2rem + 4vw, 5rem);
 
   /* --- Layout --- */
   --container: 1320px;        /* largura unica: aproveita telas largas mantendo alinhamento */
@@ -80,7 +81,7 @@
 
   /* --- Movimento --- */
   --transition: 0.18s ease;
-  --transition-slow: 0.3s ease;
+  --transition-slow: 0.4s cubic-bezier(.2, .6, .2, 1);
 
   /* --- Camadas --- */
   --z-header: 100;

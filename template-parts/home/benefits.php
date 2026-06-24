@@ -40,14 +40,14 @@ $benefits = array(
 ?>
 <section class="section hp-benefits">
 	<div class="container">
-		<div class="hp-head">
+		<div class="hp-head reveal">
 			<span class="eyebrow">Vantagens</span>
 			<h2>Tudo que voce precisa para evoluir</h2>
 		</div>
 
 		<div class="hp-benefits__grid">
 			<?php foreach ( $benefits as $b ) : ?>
-				<article class="hp-benefit">
+				<article class="hp-benefit reveal">
 					<div class="hp-benefit__icon" aria-hidden="true">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><?php echo $b['icon']; // phpcs:ignore ?></svg>
 					</div>

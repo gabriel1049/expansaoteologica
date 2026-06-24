@@ -89,7 +89,7 @@ function tpt_enqueue_assets() {
 		wp_enqueue_script( 'wc-cart-fragments' );
 	}
 
-	wp_enqueue_script( 'tpt-main', TPT_URI . '/assets/js/main.js', array(), TPT_VERSION, true );
+	wp_enqueue_script( 'tpt-main', TPT_URI . '/assets/js/main.js', array( 'jquery' ), TPT_VERSION, true );
 
 	// Camada de tracking (GA4 / Meta Pixel). Carrega no rodape.
 	wp_enqueue_script( 'tpt-tracking', TPT_URI . '/assets/js/tracking.js', array( 'tpt-main' ), TPT_VERSION, true );

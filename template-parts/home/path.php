@@ -37,7 +37,7 @@ $steps = array(
 ?>
 <section class="section hp-path">
 	<div class="container">
-		<div class="hp-head">
+		<div class="hp-head reveal">
 			<span class="eyebrow">Trilha de formacao</span>
 			<h2>Uma jornada do basico ao ministerio</h2>
 			<p class="lead">
@@ -48,7 +48,7 @@ $steps = array(
 
 		<ol class="hp-path__steps">
 			<?php foreach ( $steps as $step ) : ?>
-				<li class="hp-path__step hp-path__step--<?php echo esc_attr( $step['state'] ); ?>">
+				<li class="hp-path__step hp-path__step--<?php echo esc_attr( $step['state'] ); ?> reveal">
 					<div class="hp-path__num"><?php echo esc_html( $step['num'] ); ?></div>
 					<div class="hp-path__body">
 						<span class="hp-path__status hp-path__status--<?php echo esc_attr( $step['state'] ); ?>">

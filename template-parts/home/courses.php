@@ -35,7 +35,7 @@ $upcoming = array(
 ?>
 <section class="section hp-courses" id="cursos">
 	<div class="container">
-		<div class="hp-head hp-head--row">
+		<div class="hp-head hp-head--row reveal">
 			<div>
 				<span class="eyebrow">Cursos</span>
 				<h2>Comece sua jornada de estudos</h2>
@@ -52,7 +52,7 @@ $upcoming = array(
 				$lessons   = function_exists( 'tutor_utils' ) ? tutor_utils()->get_lesson_count_by_course( $course->ID ) : 0;
 				$thumb     = has_post_thumbnail( $course->ID ) ? get_the_post_thumbnail_url( $course->ID, 'large' ) : ( $first ? $img_course : '' );
 				?>
-				<article class="card is-interactive hp-course">
+				<article class="card is-interactive hp-course reveal">
 					<a class="hp-course__media" href="<?php echo esc_url( $permalink ); ?>" aria-hidden="true" tabindex="-1">
 						<?php if ( $thumb ) : ?>
 							<img src="<?php echo esc_url( $thumb ); ?>" alt="" loading="lazy">
@@ -72,7 +72,7 @@ $upcoming = array(
 						<?php endif; ?>
 						<div class="hp-course__foot">
 							<?php if ( $price ) : ?>
-								<span class="hp-course__price"><?php echo wp_kses_post( $price ); ?></span>
+								<span class="hp-course__pricewrap"><span class="hp-course__price"><?php echo wp_kses_post( $price ); ?></span></span>
 							<?php endif; ?>
 							<a class="btn btn--primary btn--sm js-track-cta-course" href="<?php echo esc_url( $permalink ); ?>">Ver curso</a>
 						</div>
@@ -84,7 +84,7 @@ $upcoming = array(
 			?>
 
 			<?php foreach ( $upcoming as $u ) : ?>
-				<article class="card hp-course hp-course--soon">
+				<article class="card hp-course hp-course--soon reveal">
 					<div class="hp-course__media hp-course__media--soon">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
 						<span class="hp-course__tag hp-course__tag--soon">Em breve</span>

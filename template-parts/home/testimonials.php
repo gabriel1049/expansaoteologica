@@ -30,14 +30,14 @@ $items = array(
 ?>
 <section class="section hp-tst">
 	<div class="container">
-		<div class="hp-head">
+		<div class="hp-head reveal">
 			<span class="eyebrow">Depoimentos</span>
 			<h2>Historias de quem ja estuda conosco</h2>
 		</div>
 
 		<div class="hp-tst__grid">
 			<?php foreach ( $items as $t ) : ?>
-				<blockquote class="card hp-tst__card">
+				<blockquote class="card hp-tst__card reveal">
 					<?php tpt_stars( 5 ); ?>
 					<p>"<?php echo esc_html( $t['quote'] ); ?>"</p>
 					<footer>

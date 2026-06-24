@@ -17,7 +17,7 @@ $courses_url = isset( $args['courses_url'] ) ? $args['courses_url'] : '#';
 	<div class="container">
 		<div class="hp-hero__inner">
 		<span class="eyebrow hp-hero__eyebrow">Ensino teologico para todos</span>
-		<h1 class="hp-hero__title">Formacao teologica de excelencia, acessivel a qualquer pessoa</h1>
+		<h1 class="hp-hero__title">Formacao teologica de <em>excelencia</em>, acessivel a qualquer pessoa</h1>
 		<p class="hp-hero__lead">
 			Um ecossistema completo de cursos, trilhas e especializacoes para quem deseja
 			conhecer a Biblia, crescer na fe e se preparar para o ministerio. No seu tempo,
@@ -40,4 +40,9 @@ $courses_url = isset( $args['courses_url'] ) ? $args['courses_url'] : '#';
 		</ul>
 		</div>
 	</div>
+
+	<aside class="hp-hero__card">
+		<p>"Teologia com profundidade e linguagem acessivel. Mudou minha forma de ler a Biblia."</p>
+		<strong>Aluno da Formacao Ministerial</strong>
+	</aside>
 </section>

@@ -72,4 +72,26 @@
       }
     }
   }
+
+  // ===== Scroll-reveal (entrada suave ao rolar) =====
+  var revealEls = document.querySelectorAll( '.reveal' );
+  var reduceMotion = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+  if ( revealEls.length ) {
+    if ( ! reduceMotion && 'IntersectionObserver' in window ) {
+      var io = new IntersectionObserver( function ( entries ) {
+        entries.forEach( function ( entry ) {
+          if ( entry.isIntersecting ) {
+            entry.target.classList.add( 'is-in' );
+            io.unobserve( entry.target );
+          }
+        } );
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 } );
+      Array.prototype.forEach.call( revealEls, function ( el, i ) {
+        el.style.setProperty( '--i', i % 6 );
+        io.observe( el );
+      } );
+    } else {
+      Array.prototype.forEach.call( revealEls, function ( el ) { el.classList.add( 'is-in' ); } );
+    }
+  }
 }() );

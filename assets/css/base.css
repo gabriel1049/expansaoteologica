@@ -78,7 +78,9 @@ strong, b { font-weight: var(--fw-semibold); }
 .text-center { text-align: center; }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: 0.08em;
@@ -86,6 +88,7 @@ strong, b { font-weight: var(--fw-semibold); }
   color: var(--color-gold);
   margin-bottom: var(--space-xs);
 }
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--color-gold); flex-shrink: 0; }
 
 .visually-hidden, .sr-only {
   position: absolute;

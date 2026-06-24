@@ -19,9 +19,11 @@ $diffs = array(
 	<div class="container hp-why__grid">
 		<figure class="hp-why__media">
 			<img src="<?php echo esc_url( $img_bible ); ?>" alt="Biblia aberta sobre a mesa de estudo" loading="lazy">
+			<figcaption class="hp-why__caption">A Palavra no centro de cada licao</figcaption>
+			<span class="hp-why__badge"><strong>7 dias</strong><span>de garantia</span></span>
 		</figure>
 
-		<div class="hp-why__content">
+		<div class="hp-why__content reveal">
 			<span class="eyebrow">Por que estudar conosco</span>
 			<h2>Seriedade no ensino, cuidado com cada aluno</h2>
 			<hr class="divider">

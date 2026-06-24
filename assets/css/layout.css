@@ -164,3 +164,75 @@
   .site-header__account,
   .site-header__cta { display: none; }
 }
+
+/* =========================================================
+   LOGIN / AREA DO ALUNO (split editorial) + modal de login
+   ========================================================= */
+.et-auth { display: grid; grid-template-columns: 1fr; min-height: 600px; max-width: none; padding: 0; }
+.et-auth__aside { display: none; position: relative; isolation: isolate; }
+.et-auth__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.et-auth__aside::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(15,27,45,0.45), rgba(15,27,45,0.85)),
+    radial-gradient(120% 100% at 20% 20%, transparent 40%, rgba(15,27,45,0.4));
+}
+.et-auth__aside-inner { padding: var(--space-2xl) var(--space-xl); color: #fff; max-width: 46ch; }
+.et-auth__aside-inner .eyebrow,
+.et-auth__aside-inner .eyebrow::before { color: var(--color-gold-soft); background: var(--color-gold-soft); }
+.et-auth__quote { font-size: var(--fs-lead); font-weight: var(--fw-light); line-height: 1.5; color: #fff; margin: var(--space-sm) 0; }
+.et-auth__cite { font-size: var(--fs-sm); color: var(--color-gold-soft); letter-spacing: 0.04em; }
+.et-auth__panel { display: flex; align-items: center; justify-content: center; background: var(--color-bg); padding: var(--space-xl) var(--space-md); }
+.et-auth .tutor-login-form-wrapper {
+  width: 100%; max-width: 400px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+.et-auth__eyebrow { color: var(--color-gold); }
+.et-auth__title { font-size: var(--fs-h2); color: var(--color-ink); margin-bottom: var(--space-lg); }
+
+/* Campos e botoes do form (classes reais do Tutor) - valem no split e no modal */
+.et-auth .tutor-form-control,
+.tutor-login-modal .tutor-form-control {
+  width: 100%; height: 48px;
+  font-family: var(--font-base); font-size: var(--fs-body);
+  padding: 0 1rem; background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.et-auth .tutor-form-control:focus,
+.tutor-login-modal .tutor-form-control:focus {
+  outline: 0; border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-10);
+}
+.et-auth .tutor-btn-primary,
+.tutor-login-modal .tutor-btn-primary {
+  width: 100% !important;
+  background: var(--color-cta) !important; color: var(--color-ink) !important;
+  font-family: var(--font-base) !important; font-weight: var(--fw-semibold) !important;
+  border: 0 !important; border-radius: var(--radius-sm) !important;
+  padding: 0.9rem 1.5rem !important; box-shadow: var(--shadow-xs) !important;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+}
+.et-auth .tutor-btn-primary:hover,
+.tutor-login-modal .tutor-btn-primary:hover {
+  background: var(--color-cta-hover) !important; color: #fff !important;
+  transform: translateY(-2px); box-shadow: var(--shadow-md) !important;
+}
+.et-auth .tutor-btn-ghost,
+.et-auth .tutor-btn-link,
+.tutor-login-modal .tutor-btn-ghost,
+.tutor-login-modal .tutor-btn-link { color: var(--color-primary) !important; font-weight: var(--fw-medium) !important; }
+.et-auth .tutor-btn-ghost:hover,
+.et-auth .tutor-btn-link:hover { color: var(--color-cta-hover) !important; }
+.et-auth .tutor-form-check-input:checked,
+.tutor-login-modal .tutor-form-check-input:checked { accent-color: var(--color-gold); }
+.tutor-login-modal .tutor-modal-content { border-radius: var(--radius-lg); }
+
+@media (min-width: 900px) {
+  .et-auth { grid-template-columns: 1.05fr 0.95fr; min-height: calc(100vh - 69px); }
+  .et-auth__aside { display: flex; align-items: flex-end; }
+}
