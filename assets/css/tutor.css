@@ -197,3 +197,84 @@
 @media (max-width: 768px) {
   .tutor-course-topic-single-body { padding: var(--space-md) var(--space-sm); }
 }
+
+/* =========================================================
+   ARQUIVO DE CURSOS (listagem /courses)
+   ========================================================= */
+
+/* Cabecalho branded */
+.course-archive-hero {
+  background: linear-gradient(155deg, var(--color-ink) 0%, var(--color-deep) 100%);
+  color: #fff;
+  padding-block: var(--section-y);
+}
+.course-archive-hero .eyebrow { color: var(--color-gold-soft); }
+.course-archive-hero h1 { color: #fff; margin-bottom: var(--space-2xs); }
+.course-archive-hero .lead { color: rgba(255,255,255,0.82); max-width: 60ch; margin: 0; }
+
+.course-archive-body { padding-block: var(--section-y); }
+
+/* Grade responsiva (auto-fill, sobrepoe colunas fixas do Tutor) */
+.course-archive-body .tutor-course-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: var(--space-md) !important;
+}
+
+/* Card */
+.course-archive-body .tutor-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.course-archive-body .tutor-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.course-archive-body .tutor-course-thumbnail img,
+.course-archive-body .tutor-card-image-top { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+.course-archive-body .tutor-card:hover .tutor-card-image-top { transform: scale(1.04); }
+
+.course-archive-body .tutor-card-body { padding: var(--space-md); }
+.course-archive-body .tutor-course-name { font-size: 1.1rem; font-weight: var(--fw-semibold); }
+.course-archive-body .tutor-course-name a { color: var(--color-ink); }
+.course-archive-body .tutor-course-name a:hover { color: var(--color-primary); }
+
+.course-archive-body .tutor-meta,
+.course-archive-body .tutor-meta-value,
+.course-archive-body .tutor-meta-icon { color: var(--color-text-muted); font-size: var(--fs-sm); }
+
+.course-archive-body .tutor-card-footer { padding: 0 var(--space-md) var(--space-md); margin-top: auto; }
+.course-archive-body .tutor-course-price,
+.course-archive-body .tutor-course-price .price,
+.course-archive-body .price { color: var(--color-ink); font-weight: var(--fw-bold); }
+
+/* Botao de matricula herda o CTA da marca */
+.course-archive-body .tutor-btn-outline-primary,
+.course-archive-body .tutor-course-list-enroll {
+  background: var(--color-cta) !important;
+  color: var(--color-ink) !important;
+  border: 0 !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-base) !important;
+  font-weight: var(--fw-semibold) !important;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+.course-archive-body .tutor-btn-outline-primary:hover {
+  background: var(--color-cta-hover) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* Barra de filtros / ordenacao */
+.course-archive-body .tutor-course-filter,
+.course-archive-body .tutor-course-filter-bar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+}
