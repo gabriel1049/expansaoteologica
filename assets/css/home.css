@@ -324,3 +324,13 @@
   .hp-tst__grid { gap: var(--space-lg); }
   .hp-why__grid { grid-template-columns: 1fr 1.05fr; gap: var(--space-xl); }
 }
+
+/* =========================================================
+   PAGINA SOBRE - reaproveita hp-hero / hp-why / hp-final,
+   com um hero mais contido (institucional, sem CTAs duplos)
+   ========================================================= */
+.about-hero { min-height: 340px; padding-block: var(--space-xl); }
+.about-hero .hp-hero__inner { max-width: 640px; }
+@media (min-width: 1024px) {
+  .about-hero { min-height: 380px; }
+}

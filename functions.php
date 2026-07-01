@@ -69,8 +69,9 @@ function tpt_enqueue_assets() {
 	wp_enqueue_style( 'tpt-components', TPT_URI . '/assets/css/components.css', array( 'tpt-base' ), TPT_VERSION );
 	wp_enqueue_style( 'tpt-layout', TPT_URI . '/assets/css/layout.css', array( 'tpt-components' ), TPT_VERSION );
 
-	// CSS da home so carrega na pagina inicial (performance).
-	if ( is_front_page() ) {
+	// CSS da home: componentes editoriais reutilizados (hp-hero, hp-why, hp-final)
+	// tambem servem paginas institucionais como Sobre, entao carrega nas duas.
+	if ( is_front_page() || is_page( 'sobre' ) ) {
 		wp_enqueue_style( 'tpt-home', TPT_URI . '/assets/css/home.css', array( 'tpt-layout' ), TPT_VERSION );
 	}
 
