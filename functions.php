@@ -70,8 +70,8 @@ function tpt_enqueue_assets() {
 	wp_enqueue_style( 'tpt-layout', TPT_URI . '/assets/css/layout.css', array( 'tpt-components' ), TPT_VERSION );
 
 	// CSS da home: componentes editoriais reutilizados (hp-hero, hp-why, hp-final)
-	// tambem servem paginas institucionais como Sobre, entao carrega nas duas.
-	if ( is_front_page() || is_page( 'sobre' ) ) {
+	// tambem servem paginas institucionais como Sobre e Contato.
+	if ( is_front_page() || is_page( array( 'sobre', 'contato' ) ) ) {
 		wp_enqueue_style( 'tpt-home', TPT_URI . '/assets/css/home.css', array( 'tpt-layout' ), TPT_VERSION );
 	}
 
@@ -96,6 +96,32 @@ function tpt_enqueue_assets() {
 	wp_enqueue_script( 'tpt-tracking', TPT_URI . '/assets/js/tracking.js', array( 'tpt-main' ), TPT_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'tpt_enqueue_assets' );
+
+/**
+ * Numero de WhatsApp da plataforma (formato internacional, so digitos).
+ */
+define( 'TPT_WHATSAPP_NUMBER', '5511955992339' );
+
+/**
+ * Gera o link do WhatsApp (wa.me) com mensagem opcional pre-preenchida.
+ *
+ * @param string $message Mensagem pre-preenchida (opcional).
+ */
+function tpt_whatsapp_url( $message = '' ) {
+	$url = 'https://wa.me/' . TPT_WHATSAPP_NUMBER;
+	if ( $message ) {
+		$url .= '?text=' . rawurlencode( $message );
+	}
+	return $url;
+}
+
+/**
+ * Numero de WhatsApp formatado para exibicao (+55 11 95599-2339).
+ */
+function tpt_whatsapp_display() {
+	$n = TPT_WHATSAPP_NUMBER;
+	return sprintf( '+%s %s %s-%s', substr( $n, 0, 2 ), substr( $n, 2, 2 ), substr( $n, 4, 5 ), substr( $n, 9, 4 ) );
+}
 
 /**
  * Helper: duracao formatada do curso (compatibilidade entre versoes do Tutor).

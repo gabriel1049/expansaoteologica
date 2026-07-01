@@ -334,3 +334,34 @@
 @media (min-width: 1024px) {
   .about-hero { min-height: 380px; }
 }
+
+/* =========================================================
+   PAGINA CONTATO - cards de canal (WhatsApp / e-mail)
+   ========================================================= */
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-md); max-width: 880px; margin: 0 auto; }
+.contact-card {
+  padding: var(--space-lg);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.contact-card--highlight { border-color: var(--color-gold); box-shadow: var(--shadow-md); }
+.contact-card__icon {
+  width: 64px; height: 64px;
+  margin-bottom: var(--space-sm);
+  display: grid; place-items: center;
+  background: var(--color-gold-10);
+  color: var(--color-gold);
+  border-radius: 16px;
+}
+.contact-card__icon svg { width: 30px; height: 30px; }
+.contact-card .badge { margin-bottom: var(--space-sm); }
+.contact-card__title { margin: 0 0 var(--space-2xs); }
+.contact-card__text { color: var(--color-text-muted); font-size: var(--fs-sm); max-width: 32ch; }
+.contact-card__value { font-weight: var(--fw-semibold); color: var(--color-ink); font-size: 1.1rem; margin: var(--space-xs) 0 var(--space-md); }
+.contact-card__cta { width: 100%; max-width: 280px; }
+
+@media (min-width: 768px) {
+  .contact-grid { grid-template-columns: repeat(2, 1fr); align-items: stretch; }
+}

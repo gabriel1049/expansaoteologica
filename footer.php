@@ -54,6 +54,9 @@ $tpt_courses_url = get_post_type_archive_link( 'courses' ) ? get_post_type_archi
 		<div class="site-footer__col">
 			<h3>Contato</h3>
 			<ul>
+				<?php if ( function_exists( 'tpt_whatsapp_url' ) ) : ?>
+					<li><a href="<?php echo esc_url( tpt_whatsapp_url( 'Ola! Gostaria de saber mais sobre os cursos da Expansao Teologica.' ) ); ?>" target="_blank" rel="noopener noreferrer">WhatsApp: <?php echo esc_html( tpt_whatsapp_display() ); ?></a></li>
+				<?php endif; ?>
 				<li><a href="mailto:contato@expansaoteologica.com.br">contato@expansaoteologica.com.br</a></li>
 				<li><a href="<?php echo esc_url( $tpt_student_url ); ?>">Acessar minha conta</a></li>
 			</ul>
