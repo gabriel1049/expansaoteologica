@@ -85,6 +85,11 @@ function tpt_enqueue_assets() {
 		wp_enqueue_style( 'tpt-woocommerce', TPT_URI . '/assets/css/woocommerce.css', array( 'tpt-components' ), TPT_VERSION );
 	}
 
+	// CSS do Painel do Aluno (dashboard do Tutor) so carrega la dentro.
+	if ( function_exists( 'tutor_utils' ) && tutor_utils()->is_tutor_dashboard() ) {
+		wp_enqueue_style( 'tpt-dashboard', TPT_URI . '/assets/css/dashboard.css', array( 'tpt-components' ), TPT_VERSION );
+	}
+
 	// Garante o script de fragmentos do Woo (contador de carrinho via AJAX).
 	if ( function_exists( 'WC' ) ) {
 		wp_enqueue_script( 'wc-cart-fragments' );
