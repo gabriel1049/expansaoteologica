@@ -158,6 +158,28 @@
     }
   }
 
+  // ===== Destaque do metodo de pagamento selecionado (checkout) =====
+  function updatePaymentMethodHighlight() {
+    var items = document.querySelectorAll( '.wc_payment_methods .wc_payment_method' );
+    Array.prototype.forEach.call( items, function ( li ) {
+      var radio = li.querySelector( 'input.input-radio' );
+      li.classList.toggle( 'is-selected', !! ( radio && radio.checked ) );
+    } );
+  }
+  if ( document.querySelector( '.wc_payment_methods' ) ) {
+    updatePaymentMethodHighlight();
+    document.addEventListener( 'change', function ( e ) {
+      if ( e.target.matches && e.target.matches( '.wc_payment_methods input[name="payment_method"]' ) ) {
+        updatePaymentMethodHighlight();
+      }
+    } );
+    // O WooCommerce recria essa area via AJAX ao recalcular o checkout
+    // (ex.: troca de endereco). Reaplica o destaque quando isso acontece.
+    if ( window.jQuery ) {
+      window.jQuery( document.body ).on( 'updated_checkout', updatePaymentMethodHighlight );
+    }
+  }
+
   // ===== Scroll-reveal (entrada suave ao rolar) =====
   var revealEls = document.querySelectorAll( '.reveal' );
   var reduceMotion = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
