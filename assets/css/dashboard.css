@@ -1,9 +1,23 @@
 /* =========================================================
-   Painel do Aluno (Tutor LMS Dashboard) - Expansao Teologica
-   Restilizacao completa sobre a marcacao nativa do Tutor,
-   sem tocar nos templates PHP (mais seguro em atualizacoes).
+   Painel do Aluno (Tutor LMS Frontend Dashboard)
+   Expansao Teologica
+
+   Estrategia: o Tutor pinta quase tudo com var(--tutor-color-primary)
+   (aquele azul #3E64DE). Redefinindo essa variavel no escopo do painel,
+   o azul vira dourado em cascata (menu ativo, icones, botoes, barras
+   de progresso, barra inferior mobile). Depois, polimento e responsivo.
    ========================================================= */
 
+/* ---- Troca a cor primaria do Tutor pela da marca (cascata) ---- */
+.tutor-frontend-dashboard,
+.tutor-dashboard {
+  --tutor-color-primary: #C9A24B;
+  --tutor-color-primary-hover: #B38E38;
+  --tutor-color-primary-rgb: 201, 162, 75;
+  --tutor-border-color: #E7E3DA;
+}
+
+/* ---- Base ---- */
 .tutor-dashboard {
   background: var(--color-bg);
   font-family: var(--font-base);
@@ -11,143 +25,130 @@
   padding-block: var(--space-lg) var(--space-2xl);
 }
 .tutor-dashboard .tutor-container { max-width: var(--container); }
+.tutor-dashboard .tutor-fs-4,
+.tutor-dashboard .tutor-fs-5,
+.tutor-dashboard .tutor-color-black,
+.tutor-dashboard h1, .tutor-dashboard h2, .tutor-dashboard h3 {
+  font-family: var(--font-base);
+}
+.tutor-dashboard .tutor-color-black { color: var(--color-ink) !important; }
 
-/* ===== CABECALHO ===== */
-.tutor-dashboard .tutor-frontend-dashboard-header {
+/* ---- Botoes (herdam o dourado via variavel; ajusto tipografia/raio) ---- */
+.tutor-dashboard .tutor-btn {
+  font-family: var(--font-base) !important;
+  font-weight: var(--fw-semibold) !important;
+  border-radius: var(--radius-sm) !important;
+  text-transform: none !important;
+}
+.tutor-dashboard .tutor-btn-primary { color: var(--color-ink) !important; }
+.tutor-dashboard .tutor-btn-primary:hover { color: #fff !important; }
+
+/* =========================================================
+   CABECALHO (avatar + saudacao + acoes)
+   ========================================================= */
+.tutor-frontend-dashboard-header {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
-  padding: var(--space-md) var(--space-lg);
-  margin-bottom: var(--space-lg);
   box-shadow: var(--shadow-xs);
+  padding: var(--space-md) var(--space-lg) !important;
+  margin-bottom: var(--space-lg);
 }
-.tutor-dashboard-header-avatar img {
-  border-radius: 50%;
-  border: 2px solid var(--color-gold-line);
+.tutor-dashboard-header-avatar img,
+.tutor-dashboard-header-avatar .tutor-avatar,
+.tutor-dashboard-header-avatar [class*="avatar"] {
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 3px var(--color-gold-20);
 }
-.tutor-dashboard-header-greetings {
-  color: var(--color-text-muted);
-  font-weight: var(--fw-regular);
-}
-.tutor-dashboard-header-username {
-  color: var(--color-ink) !important;
-  font-weight: var(--fw-semibold) !important;
-  font-family: var(--font-base);
-}
-.tutor-dashboard .tutor-btn,
-.tutor-dashboard .tutor-btn-outline-primary {
-  font-family: var(--font-base) !important;
-  border-radius: var(--radius-sm) !important;
-  font-weight: var(--fw-semibold) !important;
-  text-transform: none !important;
-}
-.tutor-dashboard .tutor-btn-outline-primary {
-  color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
-  background: transparent !important;
-}
-.tutor-dashboard .tutor-btn-outline-primary:hover { background: var(--color-primary) !important; color: #fff !important; }
-.tutor-dashboard .tutor-btn-primary {
-  background: var(--color-cta) !important;
-  color: var(--color-ink) !important;
-  border: 0 !important;
-}
-.tutor-dashboard .tutor-btn-primary:hover { background: var(--color-cta-hover) !important; color: #fff !important; }
+.tutor-dashboard-header-greetings { color: var(--color-text-muted) !important; font-weight: var(--fw-regular); }
+.tutor-dashboard-header-username { color: var(--color-ink) !important; font-weight: var(--fw-bold) !important; }
 
-/* ===== MENU LATERAL ===== */
+/* =========================================================
+   MENU LATERAL
+   ========================================================= */
 .tutor-dashboard-left-menu {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
-  padding: var(--space-sm);
   box-shadow: var(--shadow-xs);
+  padding: var(--space-sm);
+  overflow: hidden;
 }
+/* Remove a borda divisoria vertical nativa (usamos card fechado) */
+.tutor-dashboard .tutor-frontend-dashboard-maincontent ul.tutor-dashboard-permalinks:before { display: none !important; }
 .tutor-dashboard-permalinks { list-style: none; margin: 0; padding: 0; }
 .tutor-dashboard-menu-item { margin-bottom: 2px; }
 .tutor-dashboard-menu-item-link {
   display: flex !important;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.7rem 0.85rem;
-  border-radius: var(--radius-sm);
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem !important;
+  border-radius: var(--radius-sm) !important;
   color: var(--color-text) !important;
-  font-family: var(--font-base);
-  font-size: var(--fs-sm) !important;
+  font-family: var(--font-base) !important;
   font-weight: var(--fw-regular) !important;
   transition: background var(--transition), color var(--transition);
 }
-.tutor-dashboard-menu-item-link:hover { background: var(--color-bg); color: var(--color-primary) !important; }
-.tutor-dashboard-menu-item-icon { color: var(--color-text-muted); font-size: 1.05rem; flex-shrink: 0; }
-.tutor-dashboard-menu-item.active .tutor-dashboard-menu-item-link {
-  background: var(--color-gold-10);
+.tutor-dashboard-menu-item-link:hover { background: var(--color-bg); color: var(--color-ink) !important; }
+.tutor-dashboard-menu-item-icon { color: var(--color-text-muted); flex-shrink: 0; }
+.tutor-dashboard-menu-item.active .tutor-dashboard-menu-item-link,
+.tutor-dashboard-permalinks li.active a {
+  background: var(--color-gold-10) !important;
   color: var(--color-ink) !important;
   font-weight: var(--fw-semibold) !important;
-  border-left: 3px solid var(--color-gold);
-  padding-left: calc(0.85rem - 3px);
+  box-shadow: inset 3px 0 0 var(--color-gold);
 }
 .tutor-dashboard-menu-item.active .tutor-dashboard-menu-item-icon { color: var(--color-gold); }
 .tutor-dashboard-menu-divider { border-top: 1px solid var(--color-line); margin: var(--space-sm) 0; }
 .tutor-dashboard-menu-divider-header {
   font-size: var(--fs-xs); font-weight: var(--fw-semibold);
   text-transform: uppercase; letter-spacing: 0.05em;
-  color: var(--color-text-muted); padding: 0.4rem 0.85rem;
+  color: var(--color-text-muted); padding: 0.5rem 0.85rem 0.25rem;
 }
 
-/* ===== CONTEUDO ===== */
-.tutor-dashboard-content {
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-xs);
-}
+/* =========================================================
+   CONTEUDO
+   ========================================================= */
+.tutor-dashboard-content { color: var(--color-text); }
 .tutor-dashboard-title,
-.tutor-dashboard-content > div:first-child.tutor-fs-4,
-.tutor-dashboard-content > div:first-child.tutor-fs-5 {
+.tutor-dashboard .tutor-dashboard-content > .tutor-fs-5:first-child,
+.tutor-dashboard .tutor-dashboard-content > .tutor-fs-4:first-child {
   color: var(--color-ink) !important;
-  font-family: var(--font-base);
   font-weight: var(--fw-bold) !important;
-  font-size: 1.3rem !important;
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-line);
+  font-size: 1.35rem !important;
   margin-bottom: var(--space-lg) !important;
 }
 
-/* Cards de estatisticas (Cursos matriculados / ativos / concluidos) */
+/* Cartoes de estatistica */
 .tutor-dashboard .tutor-card {
+  background: var(--color-surface) !important;
   border: 1px solid var(--color-line) !important;
   border-radius: var(--radius-lg) !important;
-  box-shadow: none !important;
-  background: var(--color-bg);
+  box-shadow: var(--shadow-xs) !important;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
-.tutor-dashboard-content-inner > .tutor-row > [class*="tutor-col"] > .tutor-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md) !important;
-}
+.tutor-dashboard .tutor-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md) !important; }
+/* Icone redondo dos cards (o Tutor usa rgba da cor primaria -> ja fica dourado) */
 .tutor-dashboard .tutor-round-box {
   background: var(--color-gold-10) !important;
   color: var(--color-gold) !important;
-  border-radius: 50%;
 }
-.tutor-dashboard [class*="tutor-fs-3"].tutor-fw-bold,
-.tutor-dashboard [class*="tutor-fs-4"].tutor-fw-bold { color: var(--color-ink) !important; font-family: var(--font-base); }
+.tutor-dashboard .tutor-card .tutor-fs-3,
+.tutor-dashboard .tutor-card .tutor-fs-4 { color: var(--color-ink) !important; font-weight: var(--fw-bold) !important; }
 .tutor-dashboard .tutor-color-secondary { color: var(--color-text-muted) !important; }
 
-/* Cursos em progresso (cards horizontais) */
+/* Cursos em progresso */
 .tutor-course-progress-item.tutor-card { overflow: hidden; margin-bottom: var(--space-md) !important; }
-.tutor-course-progress-item .tutor-card-image-left { border-radius: var(--radius-sm); }
-.tutor-course-progress-item-title { color: var(--color-ink) !important; font-family: var(--font-base); }
-.tutor-dashboard .tutor-progress-bar { background: var(--color-line); border-radius: var(--radius-pill); }
-.tutor-dashboard .tutor-progress-bar .tutor-progress-value { background: var(--color-gold); }
+.tutor-course-progress-item-title { color: var(--color-ink) !important; }
+.tutor-dashboard .tutor-progress-bar { background: var(--color-line) !important; border-radius: var(--radius-pill) !important; }
+.tutor-dashboard .tutor-progress-bar .tutor-progress-value { background: var(--color-gold) !important; }
 
-/* ===== ABAS (enrolled courses: matriculados / ativos / concluidos) ===== */
-.tutor-dashboard .tutor-nav { border-bottom: 1px solid var(--color-line); gap: var(--space-md); }
+/* Abas (matriculados / ativos / concluidos) */
+.tutor-dashboard .tutor-nav { border-bottom: 1px solid var(--color-line); }
 .tutor-dashboard .tutor-nav-link {
   color: var(--color-text-muted) !important;
   font-family: var(--font-base);
   font-weight: var(--fw-medium) !important;
-  padding-bottom: 0.75rem !important;
   border-bottom: 2px solid transparent !important;
 }
 .tutor-dashboard .tutor-nav-link.is-active {
@@ -160,83 +161,80 @@
 .tutor-dashboard .tutor-course-card {
   border: 1px solid var(--color-line) !important;
   border-radius: var(--radius-lg) !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-xs) !important;
   overflow: hidden;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
 .tutor-dashboard .tutor-course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md) !important; }
-.tutor-dashboard .tutor-course-name a { color: var(--color-ink) !important; font-family: var(--font-base); }
+.tutor-dashboard .tutor-course-name a { color: var(--color-ink) !important; }
 .tutor-dashboard .tutor-course-name a:hover { color: var(--color-primary) !important; }
 
-/* ===== PERFIL / DADOS ===== */
-.tutor-dashboard-profile-data .tutor-color-secondary { color: var(--color-text-muted) !important; }
-.tutor-dashboard-profile-data .tutor-color-black { color: var(--color-ink) !important; font-family: var(--font-base); }
-.tutor-dashboard-profile-data > .tutor-row { padding-block: var(--space-xs); border-bottom: 1px solid var(--color-line); margin: 0 !important; }
+/* Perfil (Meu perfil) */
+.tutor-dashboard-profile-data > .tutor-row { border-bottom: 1px solid var(--color-line); padding-block: var(--space-xs); margin: 0 !important; }
 .tutor-dashboard-profile-data > .tutor-row:last-child { border-bottom: 0; }
 
-/* ===== FORMULARIOS (perfil, trocar senha, config) ===== */
+/* Formularios (perfil, senha, configuracoes) */
 .tutor-dashboard input.tutor-form-control,
 .tutor-dashboard textarea.tutor-form-control,
 .tutor-dashboard select.tutor-form-control {
   font-family: var(--font-base) !important;
   border: 1px solid var(--color-line) !important;
   border-radius: var(--radius-sm) !important;
-  padding: 0.65rem 0.9rem !important;
-  transition: border-color var(--transition), box-shadow var(--transition);
 }
 .tutor-dashboard input.tutor-form-control:focus,
 .tutor-dashboard textarea.tutor-form-control:focus,
 .tutor-dashboard select.tutor-form-control:focus {
   border-color: var(--color-gold) !important;
   box-shadow: 0 0 0 3px var(--color-gold-10) !important;
-  outline: 0;
-}
-.tutor-dashboard label { color: var(--color-ink); font-weight: var(--fw-semibold); }
-
-/* Sub-navegacao de configuracoes (Perfil / Senha / Redes sociais...) */
-.tutor-dashboard .tutor-nav.tutor-dashboard-settings-tabs .tutor-nav-link,
-.tutor-dashboard [tutor-priority-nav] .tutor-nav-link { font-family: var(--font-base); }
-
-/* ===== TABELAS (historico de compras) ===== */
-.tutor-dashboard table.tutor-table,
-.tutor-dashboard .tutor-table {
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius);
-  border-collapse: separate;
-  overflow: hidden;
-}
-.tutor-dashboard .tutor-table th {
-  background: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-base);
-  font-weight: var(--fw-semibold);
-}
-.tutor-dashboard .tutor-table td { border-top: 1px solid var(--color-line); }
-
-/* Alertas / avisos (ex.: completar perfil) */
-.tutor-dashboard .tutor-alert {
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-gold) !important;
-  background: var(--color-gold-10) !important;
-}
-.tutor-dashboard .tutor-profile-completion.tutor-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-line) !important;
 }
 
-/* Rodape mobile (navegacao fixa) */
-#tutor-dashboard-footer-mobile {
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-line);
-}
-#tutor-dashboard-footer-mobile a { color: var(--color-text-muted); font-family: var(--font-base); font-size: var(--fs-xs); }
-#tutor-dashboard-footer-mobile a.active { color: var(--color-gold); }
+/* Tabelas (historico de pedidos) */
+.tutor-dashboard .tutor-table th { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-base); }
+
+/* Alertas */
+.tutor-dashboard .tutor-alert { border-radius: var(--radius-sm); }
 
 /* =========================================================
-   RESPONSIVO
+   MOBILE (a maioria dos alunos)
+   O Tutor esconde o menu lateral e mostra uma barra fixa embaixo.
+   Aqui deixamos essa experiencia bonita e alinhada a marca.
    ========================================================= */
-@media (max-width: 767px) {
-  .tutor-dashboard { padding-block: var(--space-md) var(--space-2xl); }
-  .tutor-dashboard-left-menu { margin-bottom: var(--space-md); }
-  .tutor-dashboard-content { padding: var(--space-md); }
+
+/* Barra inferior fixa (Painel / Quiz / Menu) */
+.tutor-dashboard #tutor-dashboard-footer-mobile {
+  background: var(--color-surface) !important;
+  border-top: 1px solid var(--color-line);
+  box-shadow: 0 -4px 16px rgba(15, 27, 45, 0.08) !important;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
 }
+.tutor-dashboard #tutor-dashboard-footer-mobile a { font-family: var(--font-base); color: var(--color-text-muted); }
+.tutor-dashboard #tutor-dashboard-footer-mobile a.active { color: var(--color-gold); border-bottom-color: var(--color-gold) !important; }
+
+@media (max-width: 767px) {
+  .tutor-dashboard { padding-block: var(--space-md) var(--space-md); }
+
+  /* Cabecalho: empilha e centraliza, com respiro */
+  .tutor-frontend-dashboard-header { padding: var(--space-md) !important; text-align: center; }
+  .tutor-frontend-dashboard-header .tutor-header-left-side { justify-content: center; }
+  .tutor-frontend-dashboard-header .tutor-header-right-side { justify-content: center !important; }
+  .tutor-frontend-dashboard-header .tutor-btn { width: 100%; justify-content: center; }
+
+  /* Menu lateral aberto (overlay) vira um painel branco limpo */
+  .tutor-dashboard.is-sidebar-expanded .tutor-dashboard-left-menu {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Cartoes de estatistica: linha compacta (icone + rotulo + numero) */
+  .tutor-dashboard .tutor-card { border-radius: var(--radius) !important; }
+  .tutor-dashboard .tutor-round-box { width: 42px; height: 42px; }
+
+  /* Conteudo com respiro lateral confortavel */
+  .tutor-dashboard-content { padding: 0; }
+
+  /* Curso em progresso: imagem em cima, texto embaixo (nao espremido) */
+  .tutor-course-progress-item .tutor-card-image-left { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+}
+
+/* Tablet: 2 colunas de cards ficam confortaveis (nativo do Tutor). */
